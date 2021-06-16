@@ -15,12 +15,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser(System.getenv("USERNAME")).password(passwordEncoder().encode(System.getenv("PASSWORD"))).roles("ADMIN");
+                .withUser(System.getenv("USERNAME")).password(passwordEncoder().encode(System.getenv("PASSWORD"))).roles("admin");
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+        http.csrf().disable().httpBasic().and().authorizeRequests().anyRequest().authenticated();
     }
 
     @Bean
