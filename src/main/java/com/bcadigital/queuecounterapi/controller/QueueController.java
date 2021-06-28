@@ -33,6 +33,9 @@ public class QueueController {
 
     // Get the latest queue number of a particular entry
     // Called periodically
+    // Access to XMLHttpRequest at 'http://localhost:8080/api/v1/queue/1234' from origin 'http://127.0.0.1:5500' has been blocked by CORS policy:
+    // Response to preflight request doesn't pass access control check:
+    // No 'Access-Control-Allow-Origin' header is present on the requested resource.
     @GetMapping("/queue/{refNum}")
     public ResponseEntity<?> getQueueNumber(@PathVariable(value = "refNum") Long referenceNumber)
             throws ResourceNotFoundException{
